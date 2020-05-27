@@ -11,10 +11,8 @@ ADD deployments/startup.sh /home/
 RUN chmod +x /home/startup.sh
 WORKDIR ${JBOSS_HOME}/modules/system/layers/base/com/mysql/main
 
-ADD TestConnection.java .
 ADD module.xml .
 RUN curl -O https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.20/mysql-connector-java-8.0.20.jar && \
-    javac -cp mysql-connector-java-8.0.20.jar TestConnection.java && \
     chown -R jboss:0 ${JBOSS_HOME} && \
     chmod -R g+rw ${JBOSS_HOME}
 
