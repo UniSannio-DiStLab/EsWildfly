@@ -6,6 +6,8 @@ ENV MYSQL_HOST 192.168.99.100:3306
 
 USER root
 ADD standalone.xml ${JBOSS_HOME}/standalone/configuration/
+ADD deployments/startup.sh /home/
+RUN chmod +x /home/startup.sh
 WORKDIR ${JBOSS_HOME}/modules/system/layers/base/com/mysql/main
 
 ADD module.xml .
@@ -15,10 +17,6 @@ RUN curl -O https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.20/mys
 
 EXPOSE 8080
 EXPOSE 9990
-
-USER jboss
-
-ADD deployments/move.sh /usr/local/bin/
 
 USER jboss
 
@@ -32,4 +30,4 @@ WORKDIR /opt/jboss/wildfly/standalone/
 
 RUN /opt/jboss/wildfly/bin/add-user.sh unisannio unisannio --silent
 
-ENTRYPOINT ["/usr/local/bin/move.sh"]
+ENTRYPOINT ["/home/startup.sh"]

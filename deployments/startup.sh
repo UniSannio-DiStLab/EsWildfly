@@ -1,5 +1,5 @@
 #!/bin/bash
-# move.sh
+# startup.sh
 
 mv "/opt/jboss/wildfly/standalone/$DEPLOYMENT" /opt/jboss/wildfly/standalone/deployments/
 
