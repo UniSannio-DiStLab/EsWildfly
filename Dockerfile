@@ -32,4 +32,4 @@ WORKDIR /opt/jboss/wildfly/standalone/
 
 RUN /opt/jboss/wildfly/bin/add-user.sh unisannio unisannio --silent
 
-ENTRYPOINT ["move.sh"]
+ENTRYPOINT ["/usr/local/bin/move.sh"]
