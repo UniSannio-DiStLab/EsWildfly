@@ -5,7 +5,7 @@ mv "/opt/jboss/wildfly/standalone/$DEPLOYMENT" /opt/jboss/wildfly/standalone/dep
 
 if [ "$MULTICONT" = "yes" ]
 then
-  until cmd < /home/test/test.txt | grep 1; do
+  until cat /home/test/test.txt | grep 1; do
     >&2 echo "MySQL is unavailable - sleeping 2s"
     sleep 2
   done
