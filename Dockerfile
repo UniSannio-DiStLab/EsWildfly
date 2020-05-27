@@ -18,16 +18,18 @@ EXPOSE 9990
 
 USER jboss
 
+ADD deployments/move.sh /usr/local/bin/
+
+USER jboss
+
 ADD deployments/Customer-1.0.war /opt/jboss/wildfly/standalone/
 ADD deployments/Monolith-1.0.war /opt/jboss/wildfly/standalone/
 ADD deployments/Account-1.0.war /opt/jboss/wildfly/standalone/
 
 ENV DEPLOYMENT Monolith-1.0.war
 
-WORKDIR /opt/jobss/wildfly/standalone/
-
-RUN mv /opt/jboss/wildfly/standalone/$DEPLOYMENT /opt/jboss/wildfly/standalone/deployments/
+WORKDIR /opt/jboss/wildfly/standalone/
 
 RUN /opt/jboss/wildfly/bin/add-user.sh unisannio unisannio --silent
 
-CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
+ENTRYPOINT ["move.sh"]
