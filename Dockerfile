@@ -27,6 +27,8 @@ ADD deployments/Account-1.0.war /opt/jboss/wildfly/standalone/
 
 ENV DEPLOYMENT Monolith-1.0.war
 
+ENV MULTICONT no
+
 WORKDIR /opt/jboss/wildfly/standalone/
 
 RUN /opt/jboss/wildfly/bin/add-user.sh unisannio unisannio --silent
