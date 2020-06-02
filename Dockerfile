@@ -17,7 +17,7 @@ RUN curl -O https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.20/mys
     chmod -R g+rw ${JBOSS_HOME}
 
 EXPOSE 8080
-EXPOSE 9990dcD
+EXPOSE 9990
 
 USER jboss
 
